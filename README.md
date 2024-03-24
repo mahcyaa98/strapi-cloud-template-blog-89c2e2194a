@@ -53,5 +53,10 @@ Feel free to check out the [Strapi GitHub repository](https://github.com/strapi/
 - [Awesome Strapi](https://github.com/strapi/awesome-strapi) - A curated list of awesome things related to Strapi.
 
 ---
+git branch -v -a
+git fetch
+git switch awsdeployment
+git status
+git stash
 
 <sub>🤫 Psst! [Strapi is hiring](https://strapi.io/careers).</sub>
