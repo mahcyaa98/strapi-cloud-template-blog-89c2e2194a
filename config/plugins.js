@@ -1,6 +1,6 @@
 module.exports = ({ env }) => ({
 	"content-versioning": {
-		enabled:  true,
+		enabled:  false,
 	},
 	upload: {
 		provider: 'aws-s3',
