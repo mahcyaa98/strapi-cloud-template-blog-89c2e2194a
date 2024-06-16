@@ -821,6 +821,64 @@ export interface ApiAboutAbout extends Schema.SingleType {
   };
 }
 
+export interface ApiAppBannerAppBanner extends Schema.CollectionType {
+  collectionName: 'app_banners';
+  info: {
+    singularName: 'app-banner';
+    pluralName: 'app-banners';
+    displayName: 'APP Banner';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    app_banner_name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    app_thumbnail: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    app_promotion_url: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::app-banner.app-banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::app-banner.app-banner',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::app-banner.app-banner',
+      'oneToMany',
+      'api::app-banner.app-banner'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiArticleArticle extends Schema.CollectionType {
   collectionName: 'articles';
   info: {
@@ -1538,6 +1596,71 @@ export interface ApiNewRegistrationTAndCNewRegistrationTAndC
   };
 }
 
+export interface ApiNewSubscriptionPlanNewSubscriptionPlan
+  extends Schema.CollectionType {
+  collectionName: 'new_subscription_plans';
+  info: {
+    singularName: 'new-subscription-plan';
+    pluralName: 'new-subscription-plans';
+    displayName: 'New Subscription Plan';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    app_plan_label: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    app_plan_name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    price: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    app_plan_url: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::new-subscription-plan.new-subscription-plan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::new-subscription-plan.new-subscription-plan',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::new-subscription-plan.new-subscription-plan',
+      'oneToMany',
+      'api::new-subscription-plan.new-subscription-plan'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiPagePage extends Schema.CollectionType {
   collectionName: 'pages';
   info: {
@@ -1917,6 +2040,69 @@ export interface ApiRoamingDayPassRoamingDayPass extends Schema.CollectionType {
   };
 }
 
+export interface ApiVasVas extends Schema.CollectionType {
+  collectionName: 'vases';
+  info: {
+    singularName: 'vas';
+    pluralName: 'vases';
+    displayName: 'VAS';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    app_vas_name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    price: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    app_vas_url: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    app_thumbnail: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    app_vas_desc: Attribute.Text &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::vas.vas', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::vas.vas', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::vas.vas',
+      'oneToMany',
+      'api::vas.vas'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1936,6 +2122,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about.about': ApiAboutAbout;
+      'api::app-banner.app-banner': ApiAppBannerAppBanner;
       'api::article.article': ApiArticleArticle;
       'api::author.author': ApiAuthorAuthor;
       'api::available-rate-plan.available-rate-plan': ApiAvailableRatePlanAvailableRatePlan;
@@ -1945,10 +2132,12 @@ declare module '@strapi/types' {
       'api::lead-form-submission.lead-form-submission': ApiLeadFormSubmissionLeadFormSubmission;
       'api::menu.menu': ApiMenuMenu;
       'api::new-registration-t-and-c.new-registration-t-and-c': ApiNewRegistrationTAndCNewRegistrationTAndC;
+      'api::new-subscription-plan.new-subscription-plan': ApiNewSubscriptionPlanNewSubscriptionPlan;
       'api::page.page': ApiPagePage;
       'api::product-feature.product-feature': ApiProductFeatureProductFeature;
       'api::roaming-country-thumbnail.roaming-country-thumbnail': ApiRoamingCountryThumbnailRoamingCountryThumbnail;
       'api::roaming-day-pass.roaming-day-pass': ApiRoamingDayPassRoamingDayPass;
+      'api::vas.vas': ApiVasVas;
     }
   }
 }
